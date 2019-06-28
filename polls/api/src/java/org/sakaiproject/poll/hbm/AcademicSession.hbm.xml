@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.sakaiproject.poll.model">
+
+	<class name="org.sakaiproject.poll.model.AcademicSession"
+		table="CM_ACADEMIC_SESSION_T">
+		
+		<id name="academicSessionId" type="long" column="ACADEMIC_SESSION_ID">
+                    <generator class="native">
+                        <param name="sequence">CM_ACADEMIC_SESSION_T_ID_SEQ</param>
+                    </generator>
+		</id>
+                		
+		<property name="version" type="long" not-null="true">
+                    <column name="VERSION"/>
+                </property>
+                <property name="lastModifiedBy" type="string" length="255">
+                    <column name="LAST_MODIFIED_BY"/>
+                </property>
+                <property name="lastModifiedDate" type="date">
+                    <column name="LAST_MODIFIED_DATE"/>
+                </property>
+                <property name="createdBy" type="string" length="255">
+                    <column name="CREATED_BY"/>
+                </property>
+                <property name="createdDate" type="date">
+                    <column name="CREATED_DATE"/>
+                </property>
+                <property name="enterpriseId" type="string" length="255">
+                    <column name="ENTERPRISE_ID"/>
+                </property>
+                <property name="title" type="string" length="255">
+                    <column name="TITLE"/>
+                </property>
+                <property name="description" type="string" length="255">
+                    <column name="DESCRIPTION"/>
+                </property>
+                <property name="startDate" type="date">
+                    <column name="START_DATE"/>
+                </property>
+                <property name="endDate" type="date">
+                    <column name="END_DATE"/>
+                </property>
+                <property name="isCurrent" type="boolean">
+                    <column name="IS_CURRENT"/>
+                </property>		
+	</class>
+	
+</hibernate-mapping>

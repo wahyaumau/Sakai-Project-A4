@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- rich text evolver bean def -->
+	<bean id="richTextEvolver" parent="sakaiFCKTextEvolver" />
+
+	<bean id="sakaiFCKTextEvolver" class="org.sakaiproject.poll.tool.evolvers.SakaiFCKTextEvolver">
+                <property name="contentHostingService" ref="org.sakaiproject.content.api.ContentHostingService" />
+                <property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService"/>
+                <property name="context" ref="sakai-Context" />
+                <!-- sets the default editor size for this context -->
+                <property name="width" value="400" />
+                <property name="height" value="400" />
+        </bean>
+
+
+	<!-- error prograting bean -->
+	<!-- <bean id="allErrorsAllowable"
+		class="org.sakaiproject.poll.tool.beans.ErrorHandler">
+		<property name="errorStateManager" ref="errorStateManager" />
+	</bean>
+ -->
+	<bean id="pollToolBean"
+		class="org.sakaiproject.poll.tool.params.PollToolBean">
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager"/>
+		<property name="voteBean" ref="voteBean" />
+		<property name="pollVoteManager"
+			ref="org.sakaiproject.tool.poll.api.PollVoteManager" />
+		<property name="voteCollection" ref="voteCollection" />
+		<property name="option" ref="option" />
+		<property name="poll" ref="poll" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="messages" ref="targettedMessageList" />
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="productTypeBean"
+		class="org.sakaiproject.poll.tool.params.ProductTypeBean">
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager"/>
+	</bean>
+        
+        <bean id="productBean"
+		class="org.sakaiproject.poll.tool.params.ProductBean">
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager"/>
+	</bean>
+        
+        <bean id="customerBean"
+		class="org.sakaiproject.poll.tool.params.CustomerBean">
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager"/>
+	</bean>       
+
+	<bean id="permissionsProducer"
+		class="org.sakaiproject.poll.tool.producers.PermissionsProducer">
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+		<property name="site" ref="sakai-Site" />
+	</bean>
+        
+        <bean id="glossaryProducer"
+		class="org.sakaiproject.poll.tool.producers.GlossaryProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="productProducer"
+		class="org.sakaiproject.poll.tool.producers.ProductProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="productTypeProducer"
+		class="org.sakaiproject.poll.tool.producers.ProductTypeProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="customerProducer"
+		class="org.sakaiproject.poll.tool.producers.CustomerProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="transactionProducer"
+		class="org.sakaiproject.poll.tool.producers.TransactionProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="academicTermProducer"
+		class="org.sakaiproject.poll.tool.producers.AcademicTermProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="pollCategoryProducer"
+		class="org.sakaiproject.poll.tool.producers.PollCategoryProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="pollByCategoryProducer"
+		class="org.sakaiproject.poll.tool.producers.PollByCategoryProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="userNotVoteProducer"
+		class="org.sakaiproject.poll.tool.producers.UserNotVoteProducer">
+            
+            <property name="pollVoteManager"
+			ref="org.sakaiproject.tool.poll.api.PollVoteManager" />
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="otherOptionPollProducer"
+		class="org.sakaiproject.poll.tool.producers.OtherOptionPollProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />                        		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="userNotVotePollProducer"
+		class="org.sakaiproject.poll.tool.producers.UserNotVotePollProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+            <property name="pollVoteManager"
+			ref="org.sakaiproject.tool.poll.api.PollVoteManager" />
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+        
+        
+
+
+	<bean id="pollListProducer"
+		class="org.sakaiproject.poll.tool.producers.PollToolProducer">
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="pollVoteManager"
+			ref="org.sakaiproject.tool.poll.api.PollVoteManager" />
+		<property name="voteBean" ref="voteBean" />
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+
+	<bean id="permissionAction"
+		class="org.sakaiproject.poll.tool.params.PermissionAction">
+		<property name="roleperms" ref="roleperms" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+
+	<bean id="confirmProducer"
+		class="org.sakaiproject.poll.tool.producers.ConfirmProducer">
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="messageLocator" ref="messageLocator" />
+	</bean>
+
+	<bean id="pollOptionProducer"
+		class="org.sakaiproject.poll.tool.producers.PollOptionProducer">
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="richTextEvolver" ref="richTextEvolver" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+
+	<bean id="pollOptionDeleteProducer"
+		class="org.sakaiproject.poll.tool.producers.PollOptionDeleteProducer">
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+		<property name="pollVoteManager"
+			ref="org.sakaiproject.tool.poll.api.PollVoteManager" />
+	</bean>
+
+	<bean id="addPollProducer"
+		class="org.sakaiproject.poll.tool.producers.AddPollProducer">
+		<property name="voteBean" ref="voteBean" />
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+		<property name="richTextEvolver" ref="richTextEvolver" />
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="dateEvolver" ref="fieldDateInputEvolver" />
+		<property name="pollVoteManager"
+			ref="org.sakaiproject.tool.poll.api.PollVoteManager" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+
+
+	<bean id="pollVoteProducer"
+		class="org.sakaiproject.poll.tool.producers.PollVoteProducer">
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="pollVoteManager"
+			ref="org.sakaiproject.tool.poll.api.PollVoteManager" />
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+			<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="addGlossaryProducer"
+		class="org.sakaiproject.poll.tool.producers.AddGlossaryProducer">		
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="addProductProducer"
+		class="org.sakaiproject.poll.tool.producers.AddProductProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="editProductProducer"
+		class="org.sakaiproject.poll.tool.producers.EditProductProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="addProductStockProducer"
+		class="org.sakaiproject.poll.tool.producers.AddProductStockProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="addProductTypeProducer"
+		class="org.sakaiproject.poll.tool.producers.AddProductTypeProducer">		
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="editProductTypeProducer"
+		class="org.sakaiproject.poll.tool.producers.EditProductTypeProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="deleteProductTypeProducer"
+		class="org.sakaiproject.poll.tool.producers.DeleteProductTypeProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="deleteProductProducer"
+		class="org.sakaiproject.poll.tool.producers.DeleteProductProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="addCustomerProducer"
+		class="org.sakaiproject.poll.tool.producers.AddCustomerProducer">		
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="editCustomerProducer"
+		class="org.sakaiproject.poll.tool.producers.EditCustomerProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="deleteCustomerProducer"
+		class="org.sakaiproject.poll.tool.producers.DeleteCustomerProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="transactionDetailProducer"
+		class="org.sakaiproject.poll.tool.producers.TransactionDetailProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="addTransactionProducer"
+		class="org.sakaiproject.poll.tool.producers.AddTransactionProducer">		
+                <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="addAcademicTermProducer"
+		class="org.sakaiproject.poll.tool.producers.AddAcademicTermProducer">		
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>
+        
+        <bean id="addPollCategoryProducer"
+		class="org.sakaiproject.poll.tool.producers.AddPollCategoryProducer">		
+            
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />		
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+	</bean>               
+        
+        <bean id="editPollCategoryProducer"
+		class="org.sakaiproject.poll.tool.producers.EditPollCategoryProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+
+	<bean id="resultsProducer"
+		class="org.sakaiproject.poll.tool.producers.ResultsProducer">
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+		<property name="pollVoteManager"
+			ref="org.sakaiproject.tool.poll.api.PollVoteManager" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>
+		<property name="targettedMessageList" ref="targettedMessageList" />
+	</bean>
+        
+        <bean id="addOtherOptionProducer"
+		class="org.sakaiproject.poll.tool.producers.AddOtherOptionProducer">
+            
+            <property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />            
+		
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="org.sakaiproject.poll.logic.ExternalLogic"/>		                
+		<property name="targettedMessageList"
+			ref="targettedMessageList" />
+	</bean>
+
+	<bean id="voteCollection"
+		class="org.sakaiproject.poll.model.VoteCollection" />
+	<bean id="option" class="org.sakaiproject.poll.model.Option" />
+	<bean id="poll" class="org.sakaiproject.poll.model.Poll" />
+
+
+
+	<bean id="fieldDateTransit" parent="beanExploder">
+		<property name="factory">
+			<bean
+				class="uk.org.ponder.dateutil.StandardFieldDateTransit"
+				init-method="init">
+				<property name="locale" ref="requestLocale" />
+				<property name="timeZone" ref="requestTimeZone" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- pollBean Locator -->
+	<bean id="pollBeanLocator"
+		class="org.sakaiproject.poll.tool.locators.PollBeanLocator">
+		<property name="pollListManager"
+			ref="org.sakaiproject.poll.logic.PollListManager" />
+	</bean>
+
+	<bean id="voteBean" class="org.sakaiproject.poll.tool.params.VoteBean" />
+
+</beans>
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.sakaiproject.poll.model">
+
+	<class name="org.sakaiproject.poll.model.Product"
+		table="SAKAI_SALE_PRODUCT">
+
+		<!-- create the primary key id, using native is typically the best way
+			to do this -->
+		<id name="id" type="long" column="ID">
+			<generator class="native">
+				<param name="sequence">SAKAI_SALE_PRODUCT_ID_SEQ</param>
+			</generator>
+		</id>		
+
+		<property name="name" type="string" length="255" not-null="true">
+                    <column name="PRODUCT_NAME"/>
+                </property>
+                <property name="price" type="float" not-null="true">
+                    <column name="PRODUCT_PRICE"/>
+                </property>
+                <property name="stock" type="integer" not-null="true">
+                    <column name="PRODUCT_STOCK"/>
+                </property>                
+                <property name="productTypeId" type="long" not-null="true">
+                    <column name="PRODUCT_PRODUCT_TYPE_ID"/>
+                </property>          
+	</class>
+</hibernate-mapping>

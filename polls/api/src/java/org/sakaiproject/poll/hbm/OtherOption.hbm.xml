@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.sakaiproject.poll.model">
+
+	<class name="org.sakaiproject.poll.model.OtherOption"
+		table="POLL_OTHER_OPTION">
+
+		<!-- create the primary key id, using native is typically the best way
+			to do this -->
+		<id name="id" type="long" column="ID">
+			<generator class="native">
+				<param name="sequence">POLL_OTHER_OPTION_ID_SEQ</param>
+			</generator>
+		</id>		
+
+		<property name="pollId" type="long" not-null="true">
+			<column name="POLL_ID"/>
+		</property>
+		<property name="optionText" type="materialized_clob" length="255" not-null="true">
+			<column name="OTHER_OPTION_TEXT"/>
+		</property>						
+                <property name="userId" type="string" length="255" not-null="true">
+                    <column name="USER_ID"/>
+                </property>                
+                <property name="voteDate" type="timestamp" not-null="true">
+                    <column name="VOTE_DATE"/>
+                </property>
+	</class>
+</hibernate-mapping>

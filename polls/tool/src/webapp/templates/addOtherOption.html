@@ -1,0 +1,53 @@
+<!DOCTYPE html      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html rsf:id="polls-html" xmlns="http://www.w3.org/1999/xhtml" xmlns:rsf="http://ponder.org.uk/rsf">
+<head>
+<title>Polls: Vote Your Other Option!</title>
+<link rsf:id="scr=portal-matter" href="https://vula.uct.ac.za/library/skin/tool_base.css" type="text/css" rel="stylesheet" media="all"/>
+<link rsf:id="scr=portal-matter" href="https://vula.uct.ac.za/library/skin/default/tool.css" type="text/css" rel="stylesheet" media="all"/>
+<script rsf:id="scr=portal-matter" type="text/javascript" language="JavaScript" src="/library/js/headscripts.js"></script>
+<style>
+    .hide-element{
+        display:none
+    }    
+</style>
+</head>
+
+<body rsf:id="scr=sakai-body">
+<div class="portletBody">    
+<h3 rsf:id="add-other-option-title">Add Other Option</h3>
+<p rsf:id="poll-title">Poll Title</p>
+
+<form rsf:id="add-other-option-form">
+    <div class="form-group row"> 
+	<label for="otherOptionText" class="col-md-4 col-lg-2 form-control-label">
+		<span class="reqStarInline">*</span>
+		<span rsf:id="other-option-text-label">Question</span>
+	</label>
+	<div class="col-md-2">
+		<input name="otherOptionText" type="text" size="50" rsf:id="other-option-text-input" id="otherOptionText" />
+	</div>
+    </div>    
+    <div class="form-group row hide-element"> 
+	<label class="col-md-4 col-lg-2 form-control-label">		
+		<span rsf:id="other-option-user-id-label">User Id</span>
+	</label>
+	<div class="col-md-2">
+		<input type="text" size="500" rsf:id="other-option-user-id-input"/>
+	</div>
+    </div>
+    
+    <div class="form-group row hide-element"> 
+	<label class="col-md-4 col-lg-2 form-control-label">		
+		<span rsf:id="other-option-poll-id-label">Poll Id</span>
+	</label>
+	<div class="col-md-2">
+		<input type="text" size="500" rsf:id="other-option-poll-id-input"/>
+	</div>
+    </div>
+    <p class="act">
+        <input type="submit" value="Post" rsf:id="submit-new-other-option" class="active" />         
+    </p>	    
+</form>
+</div>
+</body>
+</html>
